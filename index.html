@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Check out Toastfire - a clean, simple, and customizable toast notification library!">
+		<title>Toastfire</title>
+		<link rel="stylesheet" href="./src/toastfire.css">
+		<link rel="stylesheet" href="./styles.css">
+	</head>
+	<body>
+		<header>
+			<h1>🔥 Toastfire 🔥</h1>
+			<hr>
+		</header>
+		<main>
+			<div class="card">
+				<h2>🍞 What is Toastfire?</h2>
+				<p>Toastfire is a JavaScript toast library by <a href="https://github.com/lraj22" target="_blank">lraj22</a>. Clean, simple, and customizable!</p>
+				<p>You can download the files from the <a href="https://github.com/lraj22/toastfire/tree/main/src" target="_blank">Github repo</a>. And while you're there, why not star the repository?</p>
+			</div>
+			<div class="card">
+				<h2>🧪 How can I test it?</h2>
+				<p>By pressing these buttons!</p>
+				<button class="example-btn btn-basic" data-handler="basic">Basic toast</button>
+				<button class="example-btn btn-error" data-handler="error">Error message</button>
+				<p>You can play around with the custom toast generator below to try out the other features.</p>
+			</div>
+			<div class="card">
+				<h2>🥪 Custom toast generator</h2>
+				<p>Use the controls below to design a custom notification!</p>
+				<div class="field">
+					<label for="custom-header">Header</label>
+					<input type="text" id="custom-header" value="Toastfire test">
+				</div>
+				<div class="field">
+					<label for="custom-text">Text</label>
+					<input type="text" id="custom-text" value="A custom notification!">
+				</div>
+				<div class="field">
+					<label for="custom-type">Type</label>
+					<select id="custom-type">
+						<option>Regular</option>
+						<option>Information</option>
+						<option>Warning</option>
+						<option>Error</option>
+					</select>
+				</div>
+				<button id="fire">Fire toast!</button>
+			</div>
+		</main>
+		<script src="./src/toastfire.js"></script>
+		<script src="./script.js"></script>
+	</body>
+</html>
