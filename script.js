@@ -1,9 +1,13 @@
 var handlers = {
 	"basic": function () {
-		alert("(a basic toast appears. this isn't it...)");
+		Toastfire.toast("Easy and simple.");
 	},
 	"error": function () {
-		alert("(an error toast appears. this isn't it...)");
+		Toastfire.toast({
+			"title": "Critical error!",
+			"message": "A critical error (0x02d1) has occurred. Try refreshing.",
+			"type": "error"
+		});
 	}
 };
 
@@ -15,12 +19,18 @@ examples.forEach(function (example) {
 		if (typeof handler === "function") {
 			handler();
 		} else {
-			alert("No valid handler was assigned to this button. Requested handler: " + requestedHandler);
+			alert("[ERROR] No valid handler was assigned to this button. Requested handler: " + requestedHandler);
 		}
 	});
 });
 
 var firer = document.getElementById("fire");
 firer.addEventListener("click", function () {
-	alert("(a toast fires. this isn't it...)");
+	var options = {};
+	var selections = document.getElementsByTagName("label");
+	for (var i = 0; i < selections.length; i++) {
+		var nextEl = selections[i].nextElementSibling;
+		options[selections[i].getAttribute("data-opt")] = nextEl.value;
+	}
+	Toastfire.toast(options);
 });

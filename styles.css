@@ -40,11 +40,16 @@ main {
 	padding: 1em 12vw;
 }
 
+a {
+	text-decoration: none;
+	color: #0066ff;
+}
+
 .card {
 	margin: 0 1em 1em 1em;
 	padding: 1em;
 	border: 1px solid #22bbff;
-	border-radius: 2px;
+	border-radius: 0.1em;
 }
 
 .example-btn {
