@@ -2,6 +2,11 @@
 // A clean, simple, and customizable toast notification library!
 
 function Toastfire(customDefaults) {
+	if (typeof options === "string") {
+		options = {
+			"type": options
+		};
+	}
 	this.defaults = Toastfire._helper.addObj(Toastfire.defaults, customDefaults);
 }
 
