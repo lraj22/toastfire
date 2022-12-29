@@ -30,7 +30,11 @@ firer.addEventListener("click", function () {
 	var selections = document.getElementsByTagName("label");
 	for (var i = 0; i < selections.length; i++) {
 		var nextEl = selections[i].nextElementSibling;
-		options[selections[i].getAttribute("data-opt")] = nextEl.value;
+		var value = nextEl.value;
+		if (nextEl.type === "number") {
+			value = parseFloat(value);
+		}
+		options[selections[i].getAttribute("data-opt")] = value;
 	}
 	Toastfire.toast(options);
 });

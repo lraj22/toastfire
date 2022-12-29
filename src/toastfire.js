@@ -30,14 +30,35 @@ Toastfire.prototype.toast = function toast(options) {
 	toast.appendChild(message);
 	document.body.appendChild(toast);
 	
-	return this;
+	// make a toast object
+	var toastObj = {
+		"element": toast,
+		"options": options,
+		"close": function close() {
+			toastObj.element.remove();
+			clearTimeout(toastObj.timeout);
+			if (typeof toastObj.options.onClose === "function") {
+				toastObj.element = null;
+				toastObj.timeout = null;
+				toastObj.options.onClose(toastObj);
+			}
+		}
+	}
+
+	// use the toast object in various ways
+	if (options.timeout) {
+		toastObj.timeout = setTimeout(toastObj.close, options.timeout);
+	}
+
+	return toastObj;
 };
 
 // static defaults object
 Toastfire.defaults = {
 	"title": null,
 	"message": null,
-	"type": "default"
+	"type": "default",
+	"timeout": 5000
 };
 
 // wrapper function for basic toasting
