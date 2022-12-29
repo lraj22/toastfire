@@ -18,7 +18,7 @@ Toastfire.prototype.toast = function toast(options) {
 		};
 	}
 	options = Toastfire._helper.addObj(this.defaults, options);
-	
+
 	// create toast
 	var toast = document.createElement("div");
 	toast.className = "toastfire toastfire-" + options.type;
@@ -29,7 +29,7 @@ Toastfire.prototype.toast = function toast(options) {
 	message.innerHTML = options.message;
 	toast.appendChild(message);
 	document.body.appendChild(toast);
-	
+
 	// make a toast object
 	var toastObj = {
 		"element": toast,
@@ -37,9 +37,9 @@ Toastfire.prototype.toast = function toast(options) {
 		"close": function close() {
 			toastObj.element.remove();
 			clearTimeout(toastObj.timeout);
+			toastObj.element = null;
+			toastObj.timeout = null;
 			if (typeof toastObj.options.onClose === "function") {
-				toastObj.element = null;
-				toastObj.timeout = null;
 				toastObj.options.onClose(toastObj);
 			}
 		}
@@ -58,7 +58,8 @@ Toastfire.defaults = {
 	"title": null,
 	"message": null,
 	"type": "default",
-	"timeout": 5000
+	"timeout": 5000,
+	"onClose": null
 };
 
 // wrapper function for basic toasting
@@ -69,8 +70,23 @@ Toastfire.toast = function toast(options) {
 // this will contain helper functions
 Toastfire._helper = {};
 
+// cloneObj function taken from https://stackoverflow.com/a/7574273
+Toastfire._helper.cloneObj = function cloneObj(obj) {
+	if (obj == null || typeof (obj) != 'object') {
+		return obj;
+	}
+
+	var clone = new obj.constructor();
+	var keys = Object.keys(obj);
+	for (var i = 0; i < keys.length; i++) {
+		clone[keys[i]] = Toastfire._helper.cloneObj(obj[keys[i]]);
+	}
+
+	return clone;
+}
+
 Toastfire._helper.addObj = function addObj(original, addme) {
-	var combined = original;
+	var combined = Toastfire._helper.cloneObj(original);
 	if (typeof addme === "object") {
 		var keys = Object.keys(addme);
 		for (var i = 0; i < keys.length; i++) {
