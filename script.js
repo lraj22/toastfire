@@ -4,8 +4,8 @@ var handlers = {
 	},
 	"error": function () {
 		Toastfire.toast({
-			"title": "Critical error!",
-			"message": "A critical error (0x02d1) has occurred. Try refreshing.",
+			"title": "Compile error",
+			"message": "Unresolved compile error. Please try again.",
 			"type": "error"
 		});
 	}

@@ -18,7 +18,18 @@ Toastfire.prototype.toast = function toast(options) {
 		};
 	}
 	options = Toastfire._helper.addObj(this.defaults, options);
-	alert("(this is toastfire! a toast should appear, but this isn't it...)");
+	
+	// create toast
+	var toast = document.createElement("div");
+	toast.className = "toastfire toastfire-" + options.type;
+	var title = document.createElement("strong");
+	title.innerHTML = options.title;
+	toast.appendChild(title);
+	var message = document.createElement("p");
+	message.innerHTML = options.message;
+	toast.appendChild(message);
+	document.body.appendChild(toast);
+	
 	return this;
 };
 

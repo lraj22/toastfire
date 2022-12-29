@@ -2,3 +2,32 @@
  * Toastfire
  * A clean, simple, and customizable toast notification library!
  */
+
+.toastfire {
+	border-radius: 0.2em;
+	box-sizing: border-box;
+	max-width: 100%;
+	padding: 0.8em;
+	position: fixed;
+	top: 8px;
+	right: 8px;
+	opacity: 0.9;
+	box-shadow: inset 0 0 2px 0.1em rgba(0, 0, 0, 0.25);
+}
+
+.toastfire strong {
+	display: block;
+	margin-bottom: 0.1em;
+}
+
+.toastfire p {
+	margin: 0;
+}
+
+.toastfire.toastfire-default {
+	background-color: white;
+}
+
+.toastfire.toastfire-error {
+	background-color: #ff8855;
+}
