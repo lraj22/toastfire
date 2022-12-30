@@ -34,6 +34,14 @@ firer.addEventListener("click", function () {
 		if (nextEl.type === "number") {
 			value = parseFloat(value);
 		}
+		if (value === "rndPageXY") {
+			var randX = Math.floor(Math.random() * window.innerWidth);
+			var randY = Math.floor(Math.random() * window.innerHeight);
+			value = {
+				"x": randX,
+				"y": randY
+			};
+		}
 		options[selections[i].getAttribute("data-opt")] = value;
 	}
 	Toastfire.toast(options);

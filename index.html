@@ -26,11 +26,11 @@
 				<p>By pressing these buttons!</p>
 				<button class="example-btn btn-basic" data-handler="basic">Basic toast</button>
 				<button class="example-btn btn-error" data-handler="error">Error message</button>
-				<p>You can play around with the custom toast generator below to try out the other features.</p>
+				<p>You can also play around with the custom toast generator below to try out other features.</p>
 			</div>
 			<div class="card">
 				<h2>🥪 Custom toast generator</h2>
-				<p>Use the controls below to design a custom notification!</p>
+				<p>Use the controls below to design and fire a custom notification!</p>
 				<div class="field">
 					<label for="custom-title" data-opt="title">Title</label>
 					<input type="text" id="custom-title" value="Toastfire test">
@@ -46,6 +46,21 @@
 						<option value="info">Information</option>
 						<option value="warning">Warning</option>
 						<option value="error">Error</option>
+					</select>
+				</div>
+				<div class="field">
+					<label for="custom-position" data-opt="position">Position</label>
+					<select id="custom-position">
+						<option value="top-left">Top left</option>
+						<option value="top-middle">Top middle</option>
+						<option value="top-right">Top right</option>
+						<option value="middle-left">Middle left</option>
+						<option value="middle-middle">Middle middle</option>
+						<option value="middle-right">Middle right</option>
+						<option value="bottom-left">Bottom left</option>
+						<option value="bottom-middle">Bottom middle</option>
+						<option value="bottom-right">Bottom right</option>
+						<option value="rndPageXY">Custom</option>
 					</select>
 				</div>
 				<div class="field">

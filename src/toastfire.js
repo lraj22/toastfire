@@ -2,9 +2,9 @@
 // A clean, simple, and customizable toast notification library!
 
 function Toastfire(customDefaults) {
-	if (typeof options === "string") {
-		options = {
-			"type": options
+	if (typeof customDefaults === "string") {
+		customDefaults = {
+			"type": customDefaults
 		};
 	}
 	this.defaults = Toastfire._helper.addObj(Toastfire.defaults, customDefaults);
@@ -28,6 +28,19 @@ Toastfire.prototype.toast = function toast(options) {
 	var message = document.createElement("p");
 	message.innerHTML = options.message;
 	toast.appendChild(message);
+
+	if (typeof options.position === "string") {
+		var positionCss = Toastfire.defaults.settings.positions[options.position];
+		for (var prop in positionCss) {
+			if (positionCss.hasOwnProperty(prop)) {
+				toast.style[prop] = positionCss[prop];
+			}
+		}
+	} else if (typeof options.position === "object") {
+		toast.style.top = options.position.y + "px";
+		toast.style.left = options.position.x + "px";
+	}
+
 	document.body.appendChild(toast);
 
 	// make a toast object
@@ -43,7 +56,7 @@ Toastfire.prototype.toast = function toast(options) {
 				toastObj.options.onClose(toastObj);
 			}
 		}
-	}
+	};
 
 	// use the toast object in various ways
 	if (options.timeout) {
@@ -59,13 +72,59 @@ Toastfire.defaults = {
 	"message": null,
 	"type": "default",
 	"timeout": 5000,
-	"onClose": null
+	"onClose": null,
+	"position": "top-right",
+	"settings": {
+		"positions": {
+			"top-left": {
+				"top": "0.5em",
+				"left": "0.5em"
+			},
+			"top-middle": {
+				"top": "0.5em",
+				"left": "50%",
+				"transform": "translateX(-50%)"
+			},
+			"top-right": {
+				"top": "0.5em",
+				"right": "0.5em"
+			},
+			"middle-left": {
+				"top": "50%",
+				"left": "0.5em",
+				"transform": "translateY(-50%)"
+			},
+			"middle-middle": {
+				"top": "50%",
+				"left": "50%",
+				"transform": "translate(-50%,-50%)"
+			},
+			"middle-right": {
+				"top": "50%",
+				"right": "0.5em",
+				"transform": "translateY(-50%)"
+			},
+			"bottom-left": {
+				"bottom": "0.5em",
+				"left": "0.5em"
+			},
+			"bottom-middle": {
+				"bottom": "0.5em",
+				"left": "50%",
+				"transform": "translateX(-50%)"
+			},
+			"bottom-right": {
+				"bottom": "0.5em",
+				"right": "0.5em"
+			}
+		}
+	}
 };
 
 // wrapper function for basic toasting
 Toastfire.toast = function toast(options) {
 	return new Toastfire().toast(options);
-}
+};
 
 // this will contain helper functions
 Toastfire._helper = {};
@@ -77,23 +136,25 @@ Toastfire._helper.cloneObj = function cloneObj(obj) {
 	}
 
 	var clone = new obj.constructor();
-	var keys = Object.keys(obj);
-	for (var i = 0; i < keys.length; i++) {
-		clone[keys[i]] = Toastfire._helper.cloneObj(obj[keys[i]]);
+	for (var key in obj) {
+		if (obj.hasOwnProperty(key)) {
+			clone[key] = Toastfire._helper.cloneObj(obj[key]);
+		}
 	}
 
 	return clone;
-}
+};
 
 Toastfire._helper.addObj = function addObj(original, addme) {
 	var combined = Toastfire._helper.cloneObj(original);
 	if (typeof addme === "object") {
-		var keys = Object.keys(addme);
-		for (var i = 0; i < keys.length; i++) {
-			combined[keys[i]] = addme[keys[i]];
+		for (var key in addme) {
+			if (addme.hasOwnProperty(key)) {
+				combined[key] = addme[key];
+			}
 		}
 	}
 	return combined;
-}
+};
 
 console.log("Toastfire loaded!");

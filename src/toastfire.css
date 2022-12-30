@@ -9,8 +9,6 @@
 	max-width: 100%;
 	padding: 0.8em;
 	position: fixed;
-	top: 8px;
-	right: 8px;
 	opacity: 0.9;
 	box-shadow: inset 0 0 2px 0.1em rgba(0, 0, 0, 0.25);
 }
