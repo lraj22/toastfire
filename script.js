@@ -8,6 +8,22 @@ var handlers = {
 			"message": "Unresolved compile error. Please try again.",
 			"type": "error"
 		});
+	},
+	"warning": function () {
+		Toastfire.toast({
+			"title": "Proceed with caution...",
+			"message": "There are dangers up ahead!",
+			"type": "warning",
+			"position": "bottom-right"
+		});
+	},
+	"info": function () {
+		Toastfire.toast({
+			"message": "HTML is <b>supported</b> in toasts!",
+			"type": "info",
+			"position": "bottom-middle",
+			"timeout": 10000
+		});
 	}
 };
 

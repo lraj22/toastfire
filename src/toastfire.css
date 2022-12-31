@@ -26,6 +26,14 @@
 	background-color: white;
 }
 
+.toastfire.toastfire-info{
+	background-color:#6699ff;
+}
+
+.toastfire.toastfire-warning{
+	background-color: #ffee11;
+}
+
 .toastfire.toastfire-error {
-	background-color: #ff8855;
+	background-color: #ff6633;
 }
