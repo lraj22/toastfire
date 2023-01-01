@@ -49,17 +49,32 @@ Toastfire.prototype.toast = function toast(options) {
 		}
 	}
 
+	if (typeof options.transitionIn === "string") {
+		toast.classList.add("toastfire-transition-" + options.transitionIn);
+	}
+
 	// make a toast object
 	var toastObj = {
 		"element": toast,
 		"options": options,
 		"close": function close() {
-			toastObj.element.remove();
+			toast.classList.remove("toastfire-transition-" + options.transitionIn);
+			if (toastObj.options.transitionOut === "none") {
+				toast.remove();
+			} else if (typeof toastObj.options.transitionOut === "string") {
+				toast.classList.add("toastfire-transition-" + options.transitionOut);
+			}
+			toast.addEventListener("animationend", function () {
+				toastObj.element = null;
+				toast.remove();
+				if (typeof toastObj.options.onClosed === "function") {
+					toastObj.options.onClosed(toastObj);
+				}
+			});
 			clearTimeout(toastObj.timeout);
-			toastObj.element = null;
 			toastObj.timeout = null;
-			if (typeof toastObj.options.onClose === "function") {
-				toastObj.options.onClose(toastObj);
+			if (typeof toastObj.options.onClosing === "function") {
+				toastObj.options.onClosing(toastObj);
 			}
 		}
 	};
@@ -78,8 +93,11 @@ Toastfire.defaults = {
 	"message": null,
 	"type": "default",
 	"timeout": 5000,
-	"onClose": null,
-	"position": "top-right"
+	"onClosing": null,
+	"onClosed": null,
+	"position": "top-right",
+	"transitionIn": "fadeInUp",
+	"transitionOut": "fadeOutDown",
 };
 
 // wrapper function for basic toasting
