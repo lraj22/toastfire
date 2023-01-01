@@ -8,9 +8,9 @@
 	box-sizing: border-box;
 	max-width: 100%;
 	padding: 0.8em;
-	position: fixed;
 	opacity: 0.9;
 	box-shadow: inset 0 0 2px 0.1em rgba(0, 0, 0, 0.25);
+	margin-bottom: 0.5em;
 }
 
 .toastfire strong {
@@ -26,14 +26,74 @@
 	background-color: white;
 }
 
-.toastfire.toastfire-info{
-	background-color:#6699ff;
+.toastfire.toastfire-info {
+	background-color: #6699ff;
 }
 
-.toastfire.toastfire-warning{
+.toastfire.toastfire-warning {
 	background-color: #ffee11;
 }
 
 .toastfire.toastfire-error {
 	background-color: #ff6633;
+}
+
+.toastfire-pos {
+	position: fixed;
+}
+
+#toastfire-pos-top-left {
+	display: flex;
+	flex-direction: column-reverse;
+	top: 0.5em;
+	left: 0.5em;
+}
+
+#toastfire-pos-top-middle {
+	display: flex;
+	flex-direction: column-reverse;
+	top: 0.5em;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#toastfire-pos-top-right {
+	display: flex;
+	flex-direction: column-reverse;
+	top: 0.5em;
+	right: 0.5em;
+}
+
+#toastfire-pos-middle-left {
+	top: 50%;
+	left: 0.5em;
+	transform: translateY(-50%);
+}
+
+#toastfire-pos-middle-middle {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#toastfire-pos-middle-right {
+	top: 50%;
+	right: 0.5em;
+	transform: translateY(-50%);
+}
+
+#toastfire-pos-bottom-left {
+	bottom: 0.5em;
+	left: 0.5em;
+}
+
+#toastfire-pos-bottom-middle {
+	bottom: 0.5em;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#toastfire-pos-bottom-right {
+	bottom: 0.5em;
+	right: 0.5em;
 }

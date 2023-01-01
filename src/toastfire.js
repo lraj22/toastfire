@@ -30,18 +30,24 @@ Toastfire.prototype.toast = function toast(options) {
 	toast.appendChild(message);
 
 	if (typeof options.position === "string") {
-		var positionCss = Toastfire.defaults.settings.positions[options.position];
-		for (var prop in positionCss) {
-			if (positionCss.hasOwnProperty(prop)) {
-				toast.style[prop] = positionCss[prop];
-			}
+		var positionContainer = document.getElementById("toastfire-pos-" + options.position);
+		if (positionContainer) {
+			positionContainer.appendChild(toast);
+		} else {
+			positionContainer = document.createElement("div");
+			positionContainer.id = "toastfire-pos-" + options.position;
+			positionContainer.className = "toastfire-pos";
+			document.body.appendChild(positionContainer);
+			positionContainer.appendChild(toast);
 		}
 	} else if (typeof options.position === "object") {
-		toast.style.top = options.position.y + "px";
-		toast.style.left = options.position.x + "px";
+		var positionCss = options.position;
+		for (var prop in positionCss) {
+			if (positionCss.hasOwnProperty(prop)) {
+				toast.style[prop] = ((typeof positionCss[prop] === "number") ? (positionCss[prop] + "px") : positionCss[prop]);
+			}
+		}
 	}
-
-	document.body.appendChild(toast);
 
 	// make a toast object
 	var toastObj = {
@@ -73,52 +79,7 @@ Toastfire.defaults = {
 	"type": "default",
 	"timeout": 5000,
 	"onClose": null,
-	"position": "top-right",
-	"settings": {
-		"positions": {
-			"top-left": {
-				"top": "0.5em",
-				"left": "0.5em"
-			},
-			"top-middle": {
-				"top": "0.5em",
-				"left": "50%",
-				"transform": "translateX(-50%)"
-			},
-			"top-right": {
-				"top": "0.5em",
-				"right": "0.5em"
-			},
-			"middle-left": {
-				"top": "50%",
-				"left": "0.5em",
-				"transform": "translateY(-50%)"
-			},
-			"middle-middle": {
-				"top": "50%",
-				"left": "50%",
-				"transform": "translate(-50%,-50%)"
-			},
-			"middle-right": {
-				"top": "50%",
-				"right": "0.5em",
-				"transform": "translateY(-50%)"
-			},
-			"bottom-left": {
-				"bottom": "0.5em",
-				"left": "0.5em"
-			},
-			"bottom-middle": {
-				"bottom": "0.5em",
-				"left": "50%",
-				"transform": "translateX(-50%)"
-			},
-			"bottom-right": {
-				"bottom": "0.5em",
-				"right": "0.5em"
-			}
-		}
-	}
+	"position": "top-right"
 };
 
 // wrapper function for basic toasting
