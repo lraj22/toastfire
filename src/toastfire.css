@@ -7,11 +7,31 @@
 	border-radius: 0.2em;
 	box-sizing: border-box;
 	max-width: 100%;
-	padding: 0.8em;
 	opacity: 0.9;
 	box-shadow: inset 0 0 2px 0.1em rgba(0, 0, 0, 0.25);
 	margin-bottom: 0.5em;
 	width: fit-content;
+	display: flex;
+	flex-direction: row;
+}
+
+.toastfire-content {
+	padding: 0.8em;
+}
+
+.toastfire.toastfire-close-visible .toastfire-content {
+	padding-right: 0.2em;
+}
+
+.toastfire-close {
+	padding: 0.6em;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.toastfire-close:hover {
+	background-color: rgba(0, 0, 0, 0.05);
 }
 
 .toastfire strong {

@@ -50,6 +50,9 @@ firer.addEventListener("click", function () {
 		if (nextEl.type === "number") {
 			value = parseFloat(value);
 		}
+		if (nextEl.type === "checkbox") {
+			value = nextEl.checked;
+		}
 		if (value === "rndPageXY") {
 			var randX = Math.floor(Math.random() * window.innerWidth);
 			var randY = Math.floor(Math.random() * window.innerHeight);

@@ -22,12 +22,15 @@ Toastfire.prototype.toast = function toast(options) {
 	// create toast
 	var toast = document.createElement("div");
 	toast.className = "toastfire toastfire-" + options.type;
+	var content = document.createElement("div");
+	content.className = "toastfire-content";
 	var title = document.createElement("strong");
 	title.innerHTML = options.title;
-	toast.appendChild(title);
+	content.appendChild(title);
 	var message = document.createElement("p");
 	message.innerHTML = options.message;
-	toast.appendChild(message);
+	content.appendChild(message);
+	toast.appendChild(content);
 
 	if (typeof options.position === "string") {
 		var positionContainer = document.getElementById("toastfire-pos-" + options.position);
@@ -84,6 +87,17 @@ Toastfire.prototype.toast = function toast(options) {
 		toastObj.timeout = setTimeout(toastObj.close, options.timeout);
 	}
 
+	if (options.showClose) {
+		toast.classList.add("toastfire-close-visible");
+		var close = document.createElement("div");
+		close.className = "toastfire-close";
+		close.innerHTML = "&times;";
+		toast.appendChild(close);
+		close.addEventListener("click", function () {
+			toastObj.close();
+		});
+	}
+
 	return toastObj;
 };
 
@@ -98,6 +112,7 @@ Toastfire.defaults = {
 	"position": "top-right",
 	"transitionIn": "fadeInUp",
 	"transitionOut": "fadeOutDown",
+	"showClose": true,
 };
 
 // wrapper function for basic toasting
