@@ -67,8 +67,15 @@ Toastfire.prototype.toast = function toast(options) {
 	function removeFirstListener() {
 		toast.classList.remove("toastfire-transition-" + options.transitionIn);
 		toast.removeEventListener("animationend", removeFirstListener);
+		if (typeof toastObj.options.onOpened === "function") {
+			toastObj.options.onOpened(toastObj);
+		}
 	}
 	toast.addEventListener("animationend", removeFirstListener);
+
+	if (typeof toastObj.options.onOpening === "function") {
+		toastObj.options.onOpening(toastObj);
+	}
 
 	// make a toast object
 	var toastObj = {
@@ -122,6 +129,8 @@ Toastfire.defaults = {
 	"message": null,
 	"type": "default",
 	"timeout": 5000,
+	"onOpening": null,
+	"onOpened": null,
 	"onClosing": null,
 	"onClosed": null,
 	"position": "top-right",
