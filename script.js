@@ -24,6 +24,57 @@ var handlers = {
 			"position": "bottom-middle",
 			"timeout": 10000
 		});
+	},
+	"custom": function () {
+		var backdrop = document.getElementById("backdrop");
+		backdrop.className = "fadein";
+		var lines = [
+			"Z2l2ZSB5b3UgdXAs",
+			"bGV0IHlvdSBkb3duLg==",
+			"cnVuIGFyb3VuZCBhbmQgZGVzZXJ0IHlvdS4=",
+			"bWFrZSB5b3UgY3J5LA==",
+			"c2F5IGdvb2RieWUu",
+			"dGVsbCBhIGxpZSBhbmQgaHVydCB5b3Uu"
+		];
+		lines = lines.map(function (line) {
+			return atob("TmV2ZXIgZ29ubmEg" + line);
+		});
+		var index = 0;
+		var toastbase = new Toastfire({
+			"position": "middle-middle",
+			"timeout": 1500
+		});
+		var musictoastbase = new Toastfire({
+			"timeout": 0,
+			"message": "♪ ♪ ♪",
+			"showClose": false,
+			"transitionOut": "none",
+			"type": "music",
+			"animation": "backforth",
+			"transitionOut": "spinout"
+		})
+		var mltoast = musictoastbase.toast({
+			"position": "middle-left"
+		});
+		var mrtoast = musictoastbase.toast({
+			"position": "middle-right"
+		});
+		var rindex = setInterval(function () {
+			if (index < lines.length) {
+				toastbase.toast({
+					"message": lines[index],
+					"timeout": 11111 - (index * 1357)
+				});
+				index++;
+			} else {
+				clearInterval(rindex);
+				mltoast.close();
+				mrtoast.close();
+				setTimeout(function () {
+					backdrop.className = "fadeout";
+				}, 3000);
+			}
+		}, 1500);
 	}
 };
 

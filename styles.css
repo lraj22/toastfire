@@ -130,3 +130,151 @@ a {
 #fire:hover:active {
 	padding: 0.5em 1.5em;
 }
+
+.toastfire-music {
+	background-color: #1188aa;
+	color: white;
+}
+
+.toastfire-animation-backforth {
+	-webkit-animation: 0.8s infinite alternate backforth;
+	animation: 0.8s infinite alternate backforth;
+}
+
+.toastfire-transition-spinout {
+	-webkit-animation: 0.5s 1 forwards spinout;
+	animation: 0.5s 1 forwards spinout;
+}
+
+#backdrop {
+	background-color: rgba(0, 0, 0, 0.4);
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+	opacity: 0;
+}
+
+.fadein {
+	-webkit-animation: 500ms 1 forwards fadein;
+	animation: 500ms 1 forwards fadein;
+}
+
+.fadeout {
+	-webkit-animation: 500ms 1 forwards fadeout;
+	animation: 500ms 1 forwards fadeout;
+}
+
+@-webkit-keyframes fadein {
+	from {
+		opacity: 0;
+		display: none;
+	}
+
+	to {
+		opacity: 1;
+		display: block;
+	}
+}
+
+@-webkit-keyframes fadeout {
+	from {
+		opacity: 1;
+		display: block;
+	}
+
+	to {
+		opacity: 0;
+		display: none;
+	}
+}
+
+@-webkit-keyframes backforth {
+	from {
+		transform: none;
+	}
+
+	33% {
+		transform: rotate(-45deg);
+	}
+
+	67% {
+		transform: rotate(45deg);
+	}
+
+	to {
+		transform: none;
+	}
+}
+
+@-webkit-keyframes spinout {
+	from {
+		transform: none;
+	}
+
+	80% {
+		transform: rotate(360deg);
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes fadein {
+	from {
+		opacity: 0;
+		display: none;
+	}
+
+	to {
+		opacity: 1;
+		display: block;
+	}
+}
+
+@keyframes fadeout {
+	from {
+		opacity: 1;
+		display: block;
+	}
+
+	to {
+		opacity: 0;
+		display: none;
+	}
+}
+
+@keyframes backforth {
+	from {
+		transform: none;
+	}
+
+	33% {
+		transform: rotate(-45deg);
+	}
+
+	67% {
+		transform: rotate(45deg);
+	}
+
+	to {
+		transform: none;
+	}
+}
+
+@keyframes spinout {
+	from {
+		transform: none;
+	}
+
+	80% {
+		transform: rotate(360deg);
+	}
+
+	to {
+		opacity: 0;
+	}
+}
