@@ -136,7 +136,7 @@ a {
 	color: white;
 }
 
-.toastfire-animation-backforth {
+.backforth {
 	-webkit-animation: 0.8s infinite alternate backforth;
 	animation: 0.8s infinite alternate backforth;
 }
@@ -197,11 +197,11 @@ a {
 	}
 
 	33% {
-		transform: rotate(-45deg);
+		transform: rotate(-20deg);
 	}
 
 	67% {
-		transform: rotate(45deg);
+		transform: rotate(20deg);
 	}
 
 	to {
@@ -253,11 +253,11 @@ a {
 	}
 
 	33% {
-		transform: rotate(-45deg);
+		transform: rotate(-20deg);
 	}
 
 	67% {
-		transform: rotate(45deg);
+		transform: rotate(20deg);
 	}
 
 	to {

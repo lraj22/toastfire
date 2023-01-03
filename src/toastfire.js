@@ -56,6 +56,20 @@ Toastfire.prototype.toast = function toast(options) {
 		toast.classList.add("toastfire-transition-" + options.transitionIn);
 	}
 
+	if (Array.isArray(options.extraClasses)) {
+		options.extraClasses.forEach(function (extraClass) {
+			toast.classList.add(extraClass);
+		});
+	} else if (typeof options.extraClasses === "string") {
+		toast.classList.add(options.extraClasses);
+	}
+
+	function removeFirstListener() {
+		toast.classList.remove("toastfire-transition-" + options.transitionIn);
+		toast.removeEventListener("animationend", removeFirstListener);
+	}
+	toast.addEventListener("animationend", removeFirstListener);
+
 	// make a toast object
 	var toastObj = {
 		"element": toast,

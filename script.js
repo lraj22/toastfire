@@ -50,7 +50,7 @@ var handlers = {
 			"showClose": false,
 			"transitionOut": "none",
 			"type": "music",
-			"animation": "backforth",
+			"extraClasses": ["backforth"],
 			"transitionOut": "spinout"
 		})
 		var mltoast = musictoastbase.toast({
