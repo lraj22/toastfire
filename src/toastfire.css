@@ -13,6 +13,8 @@
 	width: fit-content;
 	display: flex;
 	flex-direction: row;
+	transition: max-height 250ms linear, margin-bottom 250ms linear;
+	max-height: 50em;
 }
 
 .toastfire-content {
@@ -63,6 +65,11 @@
 	display: flex;
 	position: fixed;
 	flex-direction: column;
+}
+
+.toastfire-closing {
+	max-height: 0;
+	margin-bottom: 0;
 }
 
 #toastfire-pos-top-left {

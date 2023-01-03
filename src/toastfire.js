@@ -67,6 +67,7 @@ Toastfire.prototype.toast = function toast(options) {
 			} else if (typeof toastObj.options.transitionOut === "string") {
 				toast.classList.add("toastfire-transition-" + options.transitionOut);
 			}
+			toast.classList.add("toastfire-closing");
 			toast.addEventListener("animationend", function () {
 				toastObj.element = null;
 				toast.remove();
