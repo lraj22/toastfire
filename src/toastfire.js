@@ -128,6 +128,7 @@ Toastfire.defaults = {
 	"transitionIn": "fadeInUp",
 	"transitionOut": "fadeOutDown",
 	"showClose": true,
+	"extraClasses": null
 };
 
 // wrapper function for basic toasting
@@ -165,5 +166,3 @@ Toastfire._helper.addObj = function addObj(original, addme) {
 	}
 	return combined;
 };
-
-console.log("Toastfire loaded!");
