@@ -74,8 +74,7 @@ a {
 }
 
 .btn-error {
-	background-color: #ff4411;
-	color: white;
+	background-color: #ff6633;
 }
 
 .btn-warning {
@@ -114,7 +113,7 @@ a {
 
 #fire {
 	padding: 0.5em 1em;
-	background-color: #2288ff;
+	background-color: #0055dd;
 	color: white;
 	text-transform: uppercase;
 	border: none;
@@ -124,7 +123,7 @@ a {
 }
 
 #fire:hover {
-	background-color: #2266ff;
+	background-color: #0044dd;
 }
 
 #fire:hover:active {
