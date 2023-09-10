@@ -151,54 +151,6 @@
 	animation: 0.5s 1 forwards fadeOutDown;
 }
 
-@-webkit-keyframes fadeInUp {
-	from {
-		opacity: 0;
-		transform: translateY(100%);
-	}
-
-	to {
-		opacity: 1;
-		transform: none;
-	}
-}
-
-@-webkit-keyframes fadeOutDown {
-	from {
-		opacity: 1;
-		transform: none;
-	}
-
-	to {
-		opacity: 0;
-		transform: translateY(100%);
-	}
-}
-
-@-webkit-keyframes fadeInDown {
-	from {
-		opacity: 0;
-		transform: translateY(-100%);
-	}
-
-	to {
-		opacity: 1;
-		transform: none;
-	}
-}
-
-@-webkit-keyframes fadeOutUp {
-	from {
-		opacity: 1;
-		transform: none;
-	}
-
-	to {
-		opacity: 0;
-		transform: translateY(-100%);
-	}
-}
-
 @keyframes fadeInUp {
 	from {
 		opacity: 0;

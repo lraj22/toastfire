@@ -166,62 +166,6 @@ a {
 	animation: 500ms 1 forwards fadeout;
 }
 
-@-webkit-keyframes fadein {
-	from {
-		opacity: 0;
-		display: none;
-	}
-
-	to {
-		opacity: 1;
-		display: block;
-	}
-}
-
-@-webkit-keyframes fadeout {
-	from {
-		opacity: 1;
-		display: block;
-	}
-
-	to {
-		opacity: 0;
-		display: none;
-	}
-}
-
-@-webkit-keyframes backforth {
-	from {
-		transform: none;
-	}
-
-	33% {
-		transform: rotate(-20deg);
-	}
-
-	67% {
-		transform: rotate(20deg);
-	}
-
-	to {
-		transform: none;
-	}
-}
-
-@-webkit-keyframes spinout {
-	from {
-		transform: none;
-	}
-
-	80% {
-		transform: rotate(360deg);
-	}
-
-	to {
-		opacity: 0;
-	}
-}
-
 @keyframes fadein {
 	from {
 		opacity: 0;
